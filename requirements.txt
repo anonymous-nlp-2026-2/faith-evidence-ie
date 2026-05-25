@@ -1,0 +1,13 @@
+torch>=2.0
+transformers>=4.45
+datasets>=2.14
+peft>=0.7
+trl>=0.12
+bitsandbytes>=0.43
+accelerate>=0.25
+tqdm
+numpy
+pandas
+scipy
+matplotlib
+rank_bm25

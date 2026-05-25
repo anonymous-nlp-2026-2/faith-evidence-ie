@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ML artifacts
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+wandb/
+outputs/
+logs/
+checkpoints/
+
+# Data (download separately)
+data/docred/
+data/redocred/
+models/
+
+# Misc
+.pytest_cache/
+eval_outputs/
+artifacts/
+figures/
