@@ -375,11 +375,11 @@ def evaluate(predictions_flat, gold, raw_outputs, data_dir, split="dev"):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="FREIGE 推理+评测: model → predict → evaluate"
+        description="Evidence-grounded DocRE inference + evaluation: model → predict → evaluate"
     )
     parser.add_argument("--model_path", required=True,
                         help="Base model 路径，或 LoRA adapter 路径（需配合 --base_model）")
-    parser.add_argument("--base_model", default="/workspace/models/Qwen3-4B",
+    parser.add_argument("--base_model", default="./outputs",
                         help="Base model（当 model_path 是 adapter 时需要）")
     parser.add_argument("--sft_adapter", default=None,
                         help="SFT adapter 路径（评估 GRPO checkpoint 时需要，先 merge 再加载 GRPO adapter）")

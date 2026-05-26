@@ -34,7 +34,7 @@ SEED = 42
 NUM_STEPS = 10
 NUM_GENERATIONS = 4
 MAX_COMPLETION_LENGTH = 256
-MODEL_NAME = "/workspace/models/Qwen3-4B"
+MODEL_NAME = "./outputs"
 
 SYSTEM_PROMPT = (
     "You are an information extraction model. Given a document with numbered sentences "

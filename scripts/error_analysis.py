@@ -1,4 +1,4 @@
-"""Deep error analysis for FREIGE relation extraction predictions.
+"""Deep error analysis for evidence-grounded DocRE predictions.
 
 Input:
   - predictions.json from each eval dir (parsed_triples, gold_triples, doc_id, truncated)
@@ -518,7 +518,7 @@ def generate_latex_table(all_results, output_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Deep error analysis for FREIGE relation extraction predictions."
+        description="Deep error analysis for evidence-grounded DocRE predictions."
     )
     parser.add_argument(
         "--eval_dirs", nargs="+", required=True,

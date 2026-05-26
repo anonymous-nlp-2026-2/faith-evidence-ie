@@ -1,4 +1,4 @@
-"""Statistical analysis of FREIGE eval results."""
+"""Statistical analysis of evidence-grounded DocRE eval results."""
 
 import argparse
 import json
@@ -301,7 +301,7 @@ def generate_latex(groups):
 # ── Main ──────────────────────────────────────────────────────────────
 
 def main():
-    ap = argparse.ArgumentParser(description="FREIGE stat analysis")
+    ap = argparse.ArgumentParser(description="Evidence-grounded DocRE stat analysis")
     ap.add_argument("--results_dir", default="/workspace/eval_results/")
     ap.add_argument("--format", choices=["text", "json", "latex"], default="text")
     ap.add_argument("--output", default=None)
@@ -319,7 +319,7 @@ def main():
         text = generate_latex(groups)
     else:
         print("=" * 72)
-        print("FREIGE Cross-Method Summary")
+        print("Evidence-grounded DocRE Cross-Method Summary")
         print("=" * 72)
         print_summary(groups)
 

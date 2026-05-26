@@ -2,9 +2,9 @@
 
 用法:
     python -m freige.eval.batch_eval \
-        --exp_dir /workspace/grpo_extract_r3 \
-        --sft_adapter /workspace/sft_output \
-        --output_dir /workspace/eval_results/grpo_extract_r3
+        --exp_dir ./outputs \
+        --sft_adapter ./outputs \
+        --output_dir ./outputs/eval_results
 """
 
 import argparse
@@ -81,8 +81,8 @@ def main():
                         help="SFT adapter 路径")
     parser.add_argument("--output_dir", required=True,
                         help="评测结果输出目录")
-    parser.add_argument("--base_model", default="/workspace/models/Qwen3-4B")
-    parser.add_argument("--data_path", default="/workspace/data/docred")
+    parser.add_argument("--base_model", default="./outputs")
+    parser.add_argument("--data_path", default="./data/docred")
     parser.add_argument("--split", default="dev", choices=["dev", "test"])
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--max_new_tokens", type=int, default=1024)

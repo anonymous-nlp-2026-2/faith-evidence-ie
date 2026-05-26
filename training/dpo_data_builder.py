@@ -18,15 +18,15 @@
 用法:
   # 使用预计算的分数
   python -m freige.training.dpo_data_builder \
-      --input_dir /workspace/rsft_generations \
-      --scores_path /workspace/rsft_filtered/rsft_scores.jsonl \
-      --output_dir /workspace/dpo_data
+      --input_dir ./outputs \
+      --scores_path ./outputs \
+      --output_dir ./outputs
 
   # 内部计算 CED 分数
   python -m freige.training.dpo_data_builder \
-      --input_dir /workspace/rsft_generations \
-      --output_dir /workspace/dpo_data \
-      --nli_model_path /workspace/models/nli-deberta-v3-base
+      --input_dir ./outputs \
+      --output_dir ./outputs \
+      --nli_model_path ./outputs
 """
 
 import argparse

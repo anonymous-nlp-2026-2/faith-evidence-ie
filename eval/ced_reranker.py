@@ -4,12 +4,12 @@ No fine-tuning. SFT model generates N candidates per document, CED selects the b
 Compares: Greedy baseline, CED reranker, Oracle (F1-best), Random.
 
 Usage:
-  cd /workspace && python -m freige.eval.ced_reranker \
-      --base_model /workspace/models/Qwen3-4B \
-      --sft_adapter /workspace/sft_output \
-      --data_dir /workspace/data/docred \
-      --nli_model_path /workspace/models/deberta-v3-large-zeroshot-v2.0 \
-      --output_dir /workspace/eval_results/ced_reranker_poc \
+  python -m freige.eval.ced_reranker \
+      --base_model ./outputs \
+      --sft_adapter ./outputs \
+      --data_dir ./data/docred \
+      --nli_model_path ./outputs \
+      --output_dir ./outputs/eval_results
       --num_generations 8 --temperature 0.7 --max_docs 50
 """
 
@@ -279,10 +279,10 @@ def run_generation(model, tokenizer, items, args, output_dir):
 
 def main():
     parser = argparse.ArgumentParser(description="CED-as-reranker PoC")
-    parser.add_argument("--base_model", default="/workspace/models/Qwen3-4B")
-    parser.add_argument("--sft_adapter", default="/workspace/sft_output")
-    parser.add_argument("--data_dir", default="/workspace/data/docred")
-    parser.add_argument("--output_dir", default="/workspace/eval_results/ced_reranker_poc")
+    parser.add_argument("--base_model", default="./outputs")
+    parser.add_argument("--sft_adapter", default="./outputs")
+    parser.add_argument("--data_dir", default="./data/docred")
+    parser.add_argument("--output_dir", default="./outputs/eval_results")
     parser.add_argument("--nli_model_path", default="cross-encoder/nli-deberta-v3-base")
     parser.add_argument("--num_generations", type=int, default=8)
     parser.add_argument("--temperature", type=float, default=0.7)
@@ -308,7 +308,7 @@ def main():
     if args.wandb_run_name:
         import wandb
         wandb_run = wandb.init(
-            project="freige",
+            project="your-project",
             name=args.wandb_run_name,
             config=vars(args),
             tags=["ced-reranker", "inference-time"],

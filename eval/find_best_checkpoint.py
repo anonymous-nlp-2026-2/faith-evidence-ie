@@ -3,15 +3,15 @@
 用法:
     # 从 trainer_state.json（最后一个 checkpoint 包含完整历史）
     python -m freige.eval.find_best_checkpoint \
-        --log_path /workspace/grpo_extract_r3/checkpoint-756/trainer_state.json
+        --log_path ./outputs
 
     # 从实验目录（自动找最新的 trainer_state.json）
     python -m freige.eval.find_best_checkpoint \
-        --exp_dir /workspace/grpo_extract_r3
+        --exp_dir ./outputs
 
     # 指定排序指标
     python -m freige.eval.find_best_checkpoint \
-        --exp_dir /workspace/grpo_extract_r3 \
+        --exp_dir ./outputs \
         --sort_by rewards/f1_reward_fn/mean
 """
 

@@ -140,9 +140,9 @@ def run_probe(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Diversity Probe")
-    parser.add_argument("--base_model", type=str, default="/workspace/models/Qwen3-4B")
-    parser.add_argument("--sft_adapter", type=str, default="/workspace/sft_output")
-    parser.add_argument("--data_path", type=str, default="/workspace/data/docred")
+    parser.add_argument("--base_model", type=str, default="./outputs")
+    parser.add_argument("--sft_adapter", type=str, default="./outputs")
+    parser.add_argument("--data_path", type=str, default="./data/docred")
     parser.add_argument("--split", type=str, default="train")
     parser.add_argument("--n_docs", type=int, default=20)
     parser.add_argument("--n_gen", type=int, default=8)

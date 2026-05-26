@@ -6,10 +6,10 @@ models on joint F1 (relation + evidence evaluated together).
 
 Usage:
     python post_hoc_retrieval.py \
-        --predictions /workspace/eval_results/plan_014_no_evidence_eval_d076/predictions.json \
-        --dev_path /workspace/data/docred/dev.json \
-        --train_path /workspace/data/docred/train_annotated.json \
-        --output_dir /workspace/eval_results/post_hoc_bm25
+        --predictions ./outputs/eval_results
+        --dev_path ./data/docred/dev.json \
+        --train_path ./data/docred/train_annotated.json \
+        --output_dir ./outputs/eval_results
 """
 import argparse
 import json
@@ -275,7 +275,7 @@ def main():
     parser.add_argument("--predictions", required=True, help="Path to no-evidence predictions.json")
     parser.add_argument("--dev_path", required=True, help="Path to DocRED dev.json")
     parser.add_argument("--train_path", required=True, help="Path to DocRED train_annotated.json")
-    parser.add_argument("--output_dir", default="/workspace/eval_results/post_hoc_bm25")
+    parser.add_argument("--output_dir", default="./outputs/eval_results")
     parser.add_argument("--top_ks", nargs="+", type=int, default=[2, 3])
     parser.add_argument("--query_modes", nargs="+", default=["entity_only", "entity_relation"])
     args = parser.parse_args()

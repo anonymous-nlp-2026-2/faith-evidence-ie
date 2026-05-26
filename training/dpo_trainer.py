@@ -41,8 +41,8 @@ def _apply_chat_template(tokenizer, messages, **kwargs):
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
-DEFAULT_BASE_MODEL = "/workspace/models/Qwen3-4B"
-DEFAULT_SFT_ADAPTER = "/workspace/sft_output"
+DEFAULT_BASE_MODEL = "./outputs"
+DEFAULT_SFT_ADAPTER = "./outputs"
 
 
 def load_dpo_data(data_path: str, tokenizer, max_length: int = 2048):
@@ -112,7 +112,7 @@ def load_dpo_data(data_path: str, tokenizer, max_length: int = 2048):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FREIGE DPO Training")
+    parser = argparse.ArgumentParser(description="Evidence-grounded DocRE: DPO Training")
     parser.add_argument("--base_model", type=str, default=DEFAULT_BASE_MODEL)
     parser.add_argument("--sft_adapter", type=str, default=DEFAULT_SFT_ADAPTER,
                         help="SFT warmup adapter 路径 (set '' to skip)")
@@ -144,7 +144,7 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
 
     # W&B
-    parser.add_argument("--wandb_project", type=str, default="freige-dpo")
+    parser.add_argument("--wandb_project", type=str, default="your-project")
     parser.add_argument("--wandb_run_name", type=str, default=None)
 
     # LoRA

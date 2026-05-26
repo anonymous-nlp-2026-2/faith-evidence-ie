@@ -1,6 +1,6 @@
 """Generate EDCR cross-method diagnostic table from all eval results.
 
-Usage (from /workspace/):
+Usage (from ./outputs
   python -m freige.eval.cross_method_table
 """
 import json
@@ -8,19 +8,19 @@ import statistics
 from pathlib import Path
 
 EVAL_CONFIGS = [
-    {"name": "SFT baseline (quant)", "path": "/workspace/sft_baseline_eval_results/metrics.json"},
-    {"name": "SFT baseline (noquant)", "path": "/workspace/eval_results/sft_baseline_noquant/metrics.json"},
-    {"name": "SFT no-evidence", "path": "/workspace/eval_results/sft_no_evidence/metrics.json"},
-    {"name": "RSFT-CED (s42, 3ep)", "path": "/workspace/eval_results/rsft_r1/metrics.json"},
-    {"name": "RSFT-CED (s43, 3ep)", "path": "/workspace/eval_results/rsft_s43/metrics.json"},
-    {"name": "RSFT-CED (s44, 3ep)", "path": "/workspace/eval_results/rsft_s44/metrics.json"},
-    {"name": "RSFT-CED (r2a, 1ep)", "path": "/workspace/eval_results/rsft_r2a/metrics.json"},
-    {"name": "RSFT-CED (r2b, a=32)", "path": "/workspace/eval_results/rsft_r2b/metrics.json"},
-    {"name": "RSFT-flatNLI (s42)", "path": "/workspace/eval_results/rsft_flat_nli/metrics.json"},
-    {"name": "CED-reranker (N=8)", "path": "/workspace/eval_results/ced_reranker_poc/results.json",
+    {"name": "SFT baseline (quant)", "path": "./outputs"},
+    {"name": "SFT baseline (noquant)", "path": "./outputs/eval_results"},
+    {"name": "SFT no-evidence", "path": "./outputs/eval_results"},
+    {"name": "RSFT-CED (s42, 3ep)", "path": "./outputs/eval_results"},
+    {"name": "RSFT-CED (s43, 3ep)", "path": "./outputs/eval_results"},
+    {"name": "RSFT-CED (s44, 3ep)", "path": "./outputs/eval_results"},
+    {"name": "RSFT-CED (r2a, 1ep)", "path": "./outputs/eval_results"},
+    {"name": "RSFT-CED (r2b, a=32)", "path": "./outputs/eval_results"},
+    {"name": "RSFT-flatNLI (s42)", "path": "./outputs/eval_results"},
+    {"name": "CED-reranker (N=8)", "path": "./outputs/eval_results",
      "key": "ced_reranker"},
-    {"name": "GRPO bf16 (G=8, ckpt100)", "path": "/workspace/eval_results/grpo_g8_bf16_ckpt100/metrics.json"},
-    {"name": "DPO-CED (ckpt501)", "path": "/workspace/eval_results/dpo_ced/metrics.json"},
+    {"name": "GRPO bf16 (G=8, ckpt100)", "path": "./outputs/eval_results"},
+    {"name": "DPO-CED (ckpt501)", "path": "./outputs/eval_results"},
 ]
 
 
@@ -115,7 +115,7 @@ def main():
             "edcr_std": round(statistics.stdev([get_val(m, "edcr") for _, m in rsft_seeds]), 4),
         })
 
-    output_path = Path("/workspace/eval_results/cross_method_table.json")
+    output_path = Path("./outputs/eval_results")
     with open(output_path, "w") as f:
         json.dump(table_data, f, indent=2, ensure_ascii=False)
     print(f"\nExported -> {output_path}")

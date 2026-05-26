@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, "/workspace")
+# sys.path.insert(0, project_root)
 
 from freige.rewards.ced_reward import CEDRewardModel, verbalize_triple
 
@@ -89,9 +89,9 @@ def compute_ced_for_record(record, ced_model, tau=0.5):
 
 def main():
     import os
-    os.environ["HF_HOME"] = "/workspace/.hf_cache"
+    os.environ["HF_HOME"] = "~/.cache/huggingface"
 
-    input_dir = "/workspace/rsft_generations"
+    input_dir = "./outputs"
 
     print("Loading generations...")
     records = load_generations(input_dir)
@@ -107,7 +107,7 @@ def main():
     print(f"Unique docs: {n_docs}, candidates per doc: min={min(group_sizes)} max={max(group_sizes)} mean={np.mean(group_sizes):.1f}")
 
     print("Loading NLI model on cuda:2...")
-    ced_model = CEDRewardModel(model_name="/workspace/.hf_cache/hub/models--cross-encoder--nli-deberta-v3-base/snapshots/6c749ce3425cd33b46d187e45b92bbf96ee12ec7", device="cuda:0")
+    ced_model = CEDRewardModel(model_name="~/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-base/snapshots/6c749ce3425cd33b46d187e45b92bbf96ee12ec7", device="cuda:0")
     print("Model loaded.")
 
     # Scoring

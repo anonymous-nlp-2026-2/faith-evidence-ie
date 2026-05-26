@@ -1,12 +1,12 @@
 """Test set inference for DocRED - generates predictions + CodaLab submission.
 
-Usage (from /workspace/):
+Usage (from ./outputs
   python -m freige.eval.test_inference \
-    --model_path /workspace/rsft_output_s43 \
-    --base_model /workspace/models/Qwen3-4B \
-    --sft_adapter /workspace/sft_output \
-    --data_path /workspace/data/docred \
-    --output_dir /workspace/eval_results/test_rsft_s43 \
+    --model_path ./outputs \
+    --base_model ./outputs \
+    --sft_adapter ./outputs \
+    --data_path ./data/docred \
+    --output_dir ./outputs/eval_results
     --no-quantize --batch_size 16 --max_new_tokens 1024
 """
 import argparse
@@ -136,9 +136,9 @@ def to_codalab_format(predictions_by_doc, raw_docs):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FREIGE test set inference + CodaLab submission")
+    parser = argparse.ArgumentParser(description="Evidence-grounded DocRE: test set inference + CodaLab submission")
     parser.add_argument("--model_path", required=True)
-    parser.add_argument("--base_model", default="/workspace/models/Qwen3-4B")
+    parser.add_argument("--base_model", default="./outputs")
     parser.add_argument("--sft_adapter", default=None)
     parser.add_argument("--data_path", required=True)
     parser.add_argument("--output_dir", required=True)

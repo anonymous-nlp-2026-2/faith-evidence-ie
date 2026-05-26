@@ -21,7 +21,7 @@ def normalize_triple_ev(t):
 
 
 def main():
-    gen_dir = sys.argv[1] if len(sys.argv) > 1 else '/workspace/rsft_generations/generations.jsonl'
+    gen_dir = sys.argv[1] if len(sys.argv) > 1 else './outputs
 
     doc_gens = defaultdict(list)
     with open(gen_dir) as f:

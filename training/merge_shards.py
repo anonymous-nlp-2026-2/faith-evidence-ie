@@ -4,9 +4,9 @@ Dedup strategy: last-wins (shard > root). Root data was generated before
 generation_config fix (top_k=20, T=0.6), shards are post-fix (top_k=0, T=0.7).
 
 用法:
-  cd /workspace && python -m freige.training.merge_shards \
-      --shard_dir /workspace/rsft_generations \
-      --output /workspace/rsft_generations/generations_merged.jsonl
+  python -m freige.training.merge_shards \
+      --shard_dir ./outputs \
+      --output ./outputs
 """
 import argparse
 import json

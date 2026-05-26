@@ -47,7 +47,7 @@ NO_EVIDENCE_SYSTEM_PROMPT = (
     "Output as a JSON list."
 )
 
-DEFAULT_MODEL = "/workspace/models/Qwen3-4B"
+DEFAULT_MODEL = "./outputs"
 
 
 def build_chat_messages(instruction: str, input_text: str, output_text: str = None, system_prompt: str = None):
@@ -107,7 +107,7 @@ def prepare_dataset(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FREIGE SFT Training")
+    parser = argparse.ArgumentParser(description="Evidence-grounded DocRE: SFT Training")
     parser.add_argument("--model_name", type=str, default=DEFAULT_MODEL)
     parser.add_argument("--data_dir", type=str, default=None,
                         help="DocRED JSON 目录")
@@ -127,7 +127,7 @@ def main():
     parser.add_argument("--warmup_ratio", type=float, default=0.05)
     parser.add_argument("--bf16", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--wandb_project", type=str, default="freige-sft")
+    parser.add_argument("--wandb_project", type=str, default="your-project")
     parser.add_argument("--wandb_run_name", type=str, default=None)
     parser.add_argument("--no_evidence", action="store_true", default=False)
     args = parser.parse_args()

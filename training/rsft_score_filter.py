@@ -19,10 +19,10 @@
 
 用法:
   python -m freige.training.rsft_score_filter \
-      --input_dir /workspace/rsft_generations \
-      --output_path /workspace/rsft_filtered \
+      --input_dir ./outputs \
+      --output_path ./outputs \
       --selection_strategy top_pct --top_pct 25 \
-      --nli_model_path /workspace/models/nli-deberta-v3-base
+      --nli_model_path ./outputs
 """
 
 import argparse

@@ -364,8 +364,8 @@ def prepare_grpo_dataset(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FREIGE GRPO Training")
-    parser.add_argument("--model_name", type=str, default="/workspace/models/Qwen3-4B",
+    parser = argparse.ArgumentParser(description="Evidence-grounded DocRE: GRPO Training")
+    parser.add_argument("--model_name", type=str, default="./outputs",
                         help="基础模型或 SFT checkpoint 路径")
     parser.add_argument("--sft_adapter", type=str, default=None,
                         help="SFT LoRA adapter 路径（如果与 model_name 不同）")
@@ -395,7 +395,7 @@ def main():
                         help="CED tau 最终值（线性调度）")
     parser.add_argument("--bf16", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--wandb_project", type=str, default="freige-grpo")
+    parser.add_argument("--wandb_project", type=str, default="your-project")
     parser.add_argument("--wandb_run_name", type=str, default=None)
     parser.add_argument("--format_reward_weight", type=float, default=1.0,
                         help="Weight for format reward")

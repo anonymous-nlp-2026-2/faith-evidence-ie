@@ -13,7 +13,7 @@ from pathlib import Path
 
 import torch
 
-sys.path.insert(0, "/workspace")
+# sys.path.insert(0, project_root)
 
 from freige.rewards.ced_reward import CEDRewardModel, VERBALIZATION_TEMPLATES, verbalize_triple
 from freige.data.docred_processor import DOCRED_REL_INFO
@@ -123,8 +123,8 @@ def evaluate_filtered(filtered_preds, gold, evaluator):
 def main():
     parser = argparse.ArgumentParser(description="CED Evidence Filtering")
     parser.add_argument("--predictions", required=True, help="Path to predictions.json")
-    parser.add_argument("--data_dir", default="/workspace/data/docred")
-    parser.add_argument("--nli_model", default="/workspace/.hf_cache/models--cross-encoder--nli-deberta-v3-base/snapshots/6c749ce3425cd33b46d187e45b92bbf96ee12ec7")
+    parser.add_argument("--data_dir", default="./data/docred")
+    parser.add_argument("--nli_model", default="~/.cache/huggingface/models--cross-encoder--nli-deberta-v3-base/snapshots/6c749ce3425cd33b46d187e45b92bbf96ee12ec7")
     parser.add_argument("--nli_device", default="cuda:0")
     parser.add_argument("--taus", nargs="+", type=float, default=[0.3, 0.5, 0.7])
     parser.add_argument("--output_dir", required=True)

@@ -16,10 +16,10 @@
 
 用法:
   python -m freige.training.rsft_generate \
-      --base_model /workspace/models/Qwen3-4B \
-      --sft_adapter /workspace/sft_output \
-      --data_path /workspace/data/docred \
-      --output_dir /workspace/rsft_generations \
+      --base_model ./outputs \
+      --sft_adapter ./outputs \
+      --data_path ./data/docred \
+      --output_dir ./outputs \
       --num_generations 8 --temperature 0.7 --batch_size 4
 """
 
@@ -247,15 +247,15 @@ def generate_batch(model, tokenizer, prompts, num_generations, temperature, max_
 
 def main():
     parser = argparse.ArgumentParser(description="RSFT Step 1: Batch Generation")
-    parser.add_argument("--base_model", type=str, default="/workspace/models/Qwen3-4B",
+    parser.add_argument("--base_model", type=str, default="./outputs",
                         help="Base model 路径")
-    parser.add_argument("--sft_adapter", type=str, default="/workspace/sft_output",
+    parser.add_argument("--sft_adapter", type=str, default="./outputs",
                         help="SFT QLoRA adapter 路径")
     parser.add_argument("--data_path", type=str, default=None,
                         help="DocRED 数据目录")
     parser.add_argument("--split", type=str, default="train",
                         help="数据集 split (default: train)")
-    parser.add_argument("--output_dir", type=str, default="/workspace/rsft_generations",
+    parser.add_argument("--output_dir", type=str, default="./outputs",
                         help="生成结果输出目录")
     parser.add_argument("--num_generations", type=int, default=8,
                         help="每个样本生成的候选数 (default: 8)")
