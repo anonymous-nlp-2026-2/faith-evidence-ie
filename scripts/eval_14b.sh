@@ -7,18 +7,18 @@ set -euo pipefail
 
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
 
-cd /workspace
+cd .
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-2,3}"
 
 # === 训练完成后填入 ===
-MODEL_PATH="${MODEL_PATH:-/workspace/sft_output_14b}"
+MODEL_PATH="${MODEL_PATH:-./sft_output_14b}"
 SFT_ADAPTER="${SFT_ADAPTER:-}"
 # ========================
 
-BASE_MODEL="/workspace/models/Qwen/Qwen3-14B"
-DATA_PATH="/workspace/data/docred"
-OUTPUT_DIR="${OUTPUT_DIR:-/workspace/eval_results/eval_14b}"
+BASE_MODEL="Qwen/Qwen3-14B"
+DATA_PATH="data/docred"
+OUTPUT_DIR="${OUTPUT_DIR:-eval_results/eval_14b}"
 SPLIT="${SPLIT:-dev}"
 
 echo "=== 14B Eval (2-GPU: CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}) ==="

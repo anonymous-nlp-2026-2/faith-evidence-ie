@@ -5,20 +5,20 @@ set -e
 # Baseline: v3-base → ign_f1=0.4517
 # This script: v3-large → score → filter → RSFT train → D076 eval
 
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
-cd /workspace/freige
+cd .
 
-SCORED_DIR=/workspace/rsft_scored_v3_large
+SCORED_DIR=./rsft_scored_v3_large
 TRAIN_DATA=$SCORED_DIR/rsft_train.jsonl
-RSFT_OUTPUT=/workspace/rsft_output_nli_large
-EVAL_OUTPUT=/workspace/eval_results/plan010_nli_large_ablation
+RSFT_OUTPUT=./rsft_output_nli_large
+EVAL_OUTPUT=eval_results/plan010_nli_large_ablation
 
 echo "=== Step 1: CED Scoring with v3-large ==="
 echo "Start: $(date)"
 python -m freige.training.rsft_score_filter \
-    --input_dir /workspace/rsft_generations \
+    --input_dir ./rsft_generations \
     --output_path $SCORED_DIR \
     --nli_model_path cross-encoder/nli-deberta-v3-large \
     --nli_device cuda:0 \
@@ -30,8 +30,8 @@ echo "Training samples: $(wc -l < $TRAIN_DATA)"
 echo "=== Step 2: RSFT Training ==="
 echo "Start: $(date)"
 python -m freige.training.rsft_trainer \
-    --base_model /workspace/models/Qwen3-4B \
-    --sft_adapter /workspace/sft_output \
+    --base_model Qwen/Qwen3-4B \
+    --sft_adapter ./sft_output \
     --rsft_data_path $TRAIN_DATA \
     --output_dir $RSFT_OUTPUT \
     --learning_rate 2e-5 \
@@ -41,7 +41,7 @@ python -m freige.training.rsft_trainer \
     --lora_rank 64 \
     --lora_alpha 128 \
     --weighted_sampling \
-    --eval_data_dir /workspace/data/docred \
+    --eval_data_dir data/docred \
     --eval_max_docs 50 \
     --wandb_project freige-rsft \
     --wandb_run_name plan010-nli-large \
@@ -52,9 +52,9 @@ echo "=== Step 3: D076 Eval ==="
 echo "Start: $(date)"
 python -m freige.eval.inference \
     --model_path $RSFT_OUTPUT \
-    --base_model /workspace/models/Qwen3-4B \
-    --sft_adapter /workspace/sft_output \
-    --data_path /workspace/data/docred \
+    --base_model Qwen/Qwen3-4B \
+    --sft_adapter ./sft_output \
+    --data_path data/docred \
     --output_dir $EVAL_OUTPUT \
     --batch_size 4 \
     --max_new_tokens 1024 \

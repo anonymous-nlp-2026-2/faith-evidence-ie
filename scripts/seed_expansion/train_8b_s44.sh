@@ -2,18 +2,18 @@
 # 8B RSFT k=1 seed=44
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-0}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
 python -m freige.training.rsft_trainer \
-    --base_model /workspace/models/Qwen/Qwen3-8B \
-    --sft_adapter /workspace/sft_output_qwen3_8b_bf16 \
-    --rsft_data_path /workspace/rsft_scored_qwen3_8b_k1/rsft_train.jsonl \
-    --output_dir /workspace/rsft_output_qwen3_8b_k1_s44 \
+    --base_model Qwen/Qwen3-8B \
+    --sft_adapter ./sft_output_qwen3_8b_bf16 \
+    --rsft_data_path ./rsft_scored_qwen3_8b_k1/rsft_train.jsonl \
+    --output_dir ./rsft_output_qwen3_8b_k1_s44 \
     --seed 44 \
     --learning_rate 2e-5 \
     --num_epochs 3 \

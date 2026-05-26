@@ -2,20 +2,20 @@
 # LLaMA-3.1-8B SFT seed=44 train + eval pipeline
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-0}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
-OUTPUT_DIR=/workspace/sft_output_llama_3_1_8b_s44
+OUTPUT_DIR=./sft_output_llama_3_1_8b_s44
 
 echo "=== Step 1: SFT Training (seed=44) ==="
 echo "Start: $(date)"
 python -m freige.training.sft_trainer \
-    --model_name /workspace/models/meta-llama/Meta-Llama-3.1-8B \
-    --data_dir /workspace/data/docred \
+    --model_name meta-llama/Meta-Llama-3.1-8B \
+    --data_dir data/docred \
     --output_dir $OUTPUT_DIR \
     --no-quantize \
     --lora_rank 64 \
@@ -37,9 +37,9 @@ echo "=== Step 2: D076 Eval ==="
 echo "Start: $(date)"
 python -m freige.eval.inference \
     --model_path $OUTPUT_DIR \
-    --base_model /workspace/models/meta-llama/Meta-Llama-3.1-8B \
-    --data_path /workspace/data/docred \
-    --output_dir /workspace/eval_results/sft_llama_s44_eval \
+    --base_model meta-llama/Meta-Llama-3.1-8B \
+    --data_path data/docred \
+    --output_dir eval_results/sft_llama_s44_eval \
     --batch_size 4 \
     --max_new_tokens 1024 \
     --no-quantize \

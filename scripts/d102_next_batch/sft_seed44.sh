@@ -1,17 +1,17 @@
 #!/bin/bash
 set -e
 source /root/miniconda3/bin/activate
-cd /workspace/freige
+cd .
 
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export CUDA_VISIBLE_DEVICES=1
 
 python -m freige.training.sft_trainer \
-  --model_name /workspace/models/Qwen3-4B \
-  --data_dir /workspace/data/docred \
-  --output_dir /workspace/sft_output_seed44 \
+  --model_name Qwen/Qwen3-4B \
+  --data_dir data/docred \
+  --output_dir ./sft_output_seed44 \
   --lora_rank 64 \
   --lora_alpha 128 \
   --lora_dropout 0.05 \

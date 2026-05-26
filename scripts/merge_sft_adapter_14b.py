@@ -9,9 +9,9 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-BASE_MODEL = "/workspace/models/Qwen/Qwen3-14B"
-SFT_ADAPTER = "/workspace/sft_output_14b"
-OUTPUT_DIR = "/workspace/models/Qwen3-14B-sft-merged"
+BASE_MODEL = "Qwen/Qwen3-14B"
+SFT_ADAPTER = "./sft_output_14b"
+OUTPUT_DIR = "Qwen/Qwen3-14B-sft-merged"
 
 print(f"Loading base model: {BASE_MODEL}")
 model = AutoModelForCausalLM.from_pretrained(

@@ -4,15 +4,15 @@
 # Output: rsft_scored_14b/ (rsft_train.jsonl + rsft_scores.jsonl + rsft_report.json)
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-0}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
-INPUT_DIR="/workspace/rsft_generations_14b"
-OUTPUT_DIR="/workspace/rsft_scored_14b"
+INPUT_DIR="./rsft_generations_14b"
+OUTPUT_DIR="./rsft_scored_14b"
 NLI_MODEL="cross-encoder/nli-deberta-v3-base"
 
 if [ ! -d "$INPUT_DIR" ]; then

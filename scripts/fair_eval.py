@@ -1,10 +1,10 @@
 import json, re, sys
-sys.path.insert(0, '/workspace/freige')
+sys.path.insert(0, '.')
 from eval.evaluator import DocREDEvaluator
 
-TRAIN_PATH = '/workspace/data/docred/train_annotated.json'
-NOEVI_PRED = '/workspace/eval_results/qwen3_1_7b_no_evidence_eval_v3/predictions.json'
-WITHEVI_PRED = '/workspace/eval_results/qwen3_1_7b_sft_eval/predictions.json'
+TRAIN_PATH = 'data/docred/train_annotated.json'
+NOEVI_PRED = 'eval_results/qwen3_1_7b_no_evidence_eval_v3/predictions.json'
+WITHEVI_PRED = 'eval_results/qwen3_1_7b_sft_eval/predictions.json'
 
 def is_repetitive(raw_output, threshold=3):
     pattern = r'\{[^{}]+\}'

@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-BASE_MODEL="/workspace/models/Qwen3-4B"
-SFT_ADAPTER="/workspace/sft_output"
-DATA_PATH="/workspace/data/docred"
-OUTPUT_BASE="/workspace/eval_results/grpo_extract"
+BASE_MODEL="Qwen/Qwen3-4B"
+SFT_ADAPTER="./sft_output"
+DATA_PATH="data/docred"
+OUTPUT_BASE="eval_results/grpo_extract"
 
-cd /workspace
+cd .
 
 # r4 checkpoints (early steps)
 for STEP in 10 20 30; do
-    CKPT_DIR="/workspace/grpo_extract_r4/checkpoint-${STEP}"
+    CKPT_DIR="./grpo_extract_r4/checkpoint-${STEP}"
     OUTPUT_DIR="${OUTPUT_BASE}_r4_step${STEP}"
 
     if [ ! -d "$CKPT_DIR" ]; then
@@ -42,7 +42,7 @@ done
 
 # r3 checkpoints (late steps)
 for STEP in 680 700 720 740 756; do
-    CKPT_DIR="/workspace/grpo_extract_r3/checkpoint-${STEP}"
+    CKPT_DIR="./grpo_extract_r3/checkpoint-${STEP}"
     OUTPUT_DIR="${OUTPUT_BASE}_r3_step${STEP}"
 
     if [ ! -d "$CKPT_DIR" ]; then

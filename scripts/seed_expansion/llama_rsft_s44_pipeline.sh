@@ -3,18 +3,18 @@
 # Method A: reuse s42 CED-scored data, only vary RSFT training seed
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-0}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
-BASE_MODEL=/workspace/models/meta-llama/Meta-Llama-3.1-8B
-SFT_ADAPTER=/workspace/sft_output_llama_3_1_8b
-RSFT_DATA=/workspace/rsft_scored_llama_3_1_8b_k1/rsft_train.jsonl
-RSFT_OUTPUT=/workspace/rsft_output_llama_3_1_8b_k1_s44
-EVAL_OUTPUT=/workspace/eval_results/rsft_llama_k1_s44_eval
+BASE_MODEL=meta-llama/Meta-Llama-3.1-8B
+SFT_ADAPTER=./sft_output_llama_3_1_8b
+RSFT_DATA=./rsft_scored_llama_3_1_8b_k1/rsft_train.jsonl
+RSFT_OUTPUT=./rsft_output_llama_3_1_8b_k1_s44
+EVAL_OUTPUT=eval_results/rsft_llama_k1_s44_eval
 
 echo "=== Step 1: RSFT Training (seed=44) ==="
 echo "Start: $(date)"
@@ -45,7 +45,7 @@ python -m freige.eval.inference \
     --model_path $RSFT_OUTPUT \
     --base_model $BASE_MODEL \
     --sft_adapter $SFT_ADAPTER \
-    --data_path /workspace/data/docred \
+    --data_path data/docred \
     --output_dir $EVAL_OUTPUT \
     --batch_size 4 \
     --max_new_tokens 1024 \

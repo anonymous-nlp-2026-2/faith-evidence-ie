@@ -7,6 +7,6 @@
 set -euo pipefail
 
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace
+cd .
 
 python -m freige.eval.cross_method_table "$@"

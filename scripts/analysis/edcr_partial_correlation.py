@@ -14,13 +14,13 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-REL_INFO_PATH = "/workspace/baselines/dreeam/meta/rel_info.json"
-GOLD_PATH = "/workspace/data/re-docred-repo/data/dev_revised.json"
+REL_INFO_PATH = "./baselines/dreeam/meta/rel_info.json"
+GOLD_PATH = "data/re-docred-repo/data/dev_revised.json"
 
 EVAL_DIRS = {
-    "Qwen3-8B RSFT": "/workspace/eval_results/d102_8b_k1_s42",
-    "Qwen3-1.7B RSFT": "/workspace/eval_results/d102_1_7b_k1_s42",
-    "Llama-3.1-8B RSFT": "/workspace/eval_results/d102_llama_k1_s42",
+    "Qwen3-8B RSFT": "eval_results/d102_8b_k1_s42",
+    "Qwen3-1.7B RSFT": "eval_results/d102_1_7b_k1_s42",
+    "Llama-3.1-8B RSFT": "eval_results/d102_llama_k1_s42",
 }
 
 MIN_SAMPLES = 5
@@ -295,7 +295,7 @@ def main():
             print("  Results are mixed across models. EDCR validity as an independent")
             print("  indicator requires further investigation.")
 
-    out = "/workspace/eval_results/edcr_partial_correlation_analysis.json"
+    out = "eval_results/edcr_partial_correlation_analysis.json"
     with open(out, "w") as f:
         json.dump(all_results, f, indent=2)
     print(f"\nSaved: {out}")

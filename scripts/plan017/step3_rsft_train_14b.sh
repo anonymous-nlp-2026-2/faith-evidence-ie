@@ -4,16 +4,16 @@
 # Uses: accelerate + DeepSpeed ZeRO-3 on 2 GPUs
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-2,3}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
-MERGED_MODEL="/workspace/models/Qwen3-14B-sft-merged"
-RSFT_DATA="/workspace/rsft_scored_14b/rsft_train.jsonl"
-OUTPUT_DIR="/workspace/rsft_output_14b"
+MERGED_MODEL="Qwen/Qwen3-14B-sft-merged"
+RSFT_DATA="./rsft_scored_14b/rsft_train.jsonl"
+OUTPUT_DIR="./rsft_output_14b"
 
 # --- Pre-flight checks ---
 if [ ! -d "$MERGED_MODEL" ]; then

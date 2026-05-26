@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-CKPT_BASE="/workspace/grpo_ced_g8_bf16"
-BASE_MODEL="/workspace/models/Qwen3-4B"
-SFT_ADAPTER="/workspace/sft_output"
-DATA_PATH="/workspace/data/docred"
-OUTPUT_BASE="/workspace/eval_results/plan_011_bf16_g8"
+CKPT_BASE="./grpo_ced_g8_bf16"
+BASE_MODEL="Qwen/Qwen3-4B"
+SFT_ADAPTER="./sft_output"
+DATA_PATH="data/docred"
+OUTPUT_BASE="eval_results/plan_011_bf16_g8"
 
-cd /workspace
+cd .
 
 for STEP in 30 50 70; do
     CKPT_DIR="${CKPT_BASE}/checkpoint-${STEP}"

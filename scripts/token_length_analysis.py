@@ -3,18 +3,18 @@ import json
 import sys
 import numpy as np
 
-sys.path.insert(0, "/workspace/freige")
+sys.path.insert(0, ".")
 
 from transformers import AutoTokenizer
 from freige.data.docred_processor import DocREDProcessor
 from freige.training.sft_trainer import build_chat_messages, SYSTEM_PROMPT
 
 tokenizer = AutoTokenizer.from_pretrained(
-    "/workspace/models/Qwen/Qwen3-14B",
+    "Qwen/Qwen3-14B",
     trust_remote_code=True,
 )
 
-processor = DocREDProcessor(data_dir="/workspace/data/docred")
+processor = DocREDProcessor(data_dir="data/docred")
 samples = processor.process("train")
 groups = processor.group_by_document(samples)
 

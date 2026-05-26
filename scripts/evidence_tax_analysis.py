@@ -12,13 +12,13 @@ import sys
 from collections import defaultdict, Counter
 from pathlib import Path
 
-sys.path.insert(0, '/workspace/freige')
+sys.path.insert(0, '.')
 
 # ============================================================
 # Data paths
 # ============================================================
-EVAL_ROOT = Path("/workspace/eval_results")
-DATA_ROOT = Path("/workspace/data/docred")
+EVAL_ROOT = Path("eval_results")
+DATA_ROOT = Path("data/docred")
 
 # SFT with-evidence vs no-evidence pairs
 SFT_PAIRS = {

@@ -77,8 +77,8 @@ def convert(src_dir: str, dst_dir: str, mode: str = "evidence_only"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--src", default="/workspace/data/re-docred-repo/data")
-    parser.add_argument("--dst", default="/workspace/data/re-docred")
+    parser.add_argument("--src", default="data/re-docred-repo/data")
+    parser.add_argument("--dst", default="data/re-docred")
     parser.add_argument("--mode", choices=["full", "evidence_only"],
                         default="evidence_only",
                         help="full=keep all triples; evidence_only=filter out empty evidence")

@@ -4,10 +4,10 @@ import json, csv, os, sys
 from collections import defaultdict
 from pathlib import Path
 
-EVAL_DIR = Path("/workspace/eval_results")
-GOLD_PATH = Path("/workspace/data/docred/dev.json")
-TRAIN_PATH = Path("/workspace/data/docred/train_annotated.json")
-OUT_DIR = Path("/workspace/freige/scripts/analysis/results")
+EVAL_DIR = Path("eval_results")
+GOLD_PATH = Path("data/docred/dev.json")
+TRAIN_PATH = Path("data/docred/train_annotated.json")
+OUT_DIR = Path("./scripts/analysis/results")
 
 PRED_FILES = {
     "4B_SFT": EVAL_DIR / "d111_4b_sft_s42_reeval" / "predictions.json",

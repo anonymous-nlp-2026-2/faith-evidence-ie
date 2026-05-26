@@ -6,43 +6,43 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-RESULTS_DIR = "/workspace/freige/scripts/analysis/results"
+RESULTS_DIR = "./scripts/analysis/results"
 
 PAIRS = {
     "Qwen3-1.7B": {
-        "with": "/workspace/eval_results/qwen3_1_7b_sft_eval/predictions.json",
-        "without": "/workspace/eval_results/qwen3_1_7b_no_evidence_eval_v3/predictions.json",
+        "with": "eval_results/qwen3_1_7b_sft_eval/predictions.json",
+        "without": "eval_results/qwen3_1_7b_no_evidence_eval_v3/predictions.json",
     },
     "Qwen3-4B": {
-        "with": "/workspace/eval_results/d111_4b_sft_s42_reeval/predictions.json",
-        "without": "/workspace/eval_results/plan_014_no_evidence_eval_d076/predictions.json",
+        "with": "eval_results/d111_4b_sft_s42_reeval/predictions.json",
+        "without": "eval_results/plan_014_no_evidence_eval_d076/predictions.json",
     },
     "Qwen3-8B": {
-        "with": "/workspace/eval_results/qwen3_8b_sft_eval/predictions.json",
-        "without": "/workspace/eval_results/qwen3_8b_no_evidence_eval_v2/predictions.json",
+        "with": "eval_results/qwen3_8b_sft_eval/predictions.json",
+        "without": "eval_results/qwen3_8b_no_evidence_eval_v2/predictions.json",
     },
     "Llama-3.1-8B": {
-        "with": "/workspace/eval_results/llama_3_1_8b_sft_eval/predictions.json",
-        "without": "/workspace/eval_results/llama_3_1_8b_no_evidence_eval/predictions.json",
+        "with": "eval_results/llama_3_1_8b_sft_eval/predictions.json",
+        "without": "eval_results/llama_3_1_8b_no_evidence_eval/predictions.json",
     },
 }
 
 METRICS = {
     "Qwen3-1.7B": {
-        "with": "/workspace/eval_results/qwen3_1_7b_sft_eval/metrics.json",
-        "without": "/workspace/eval_results/qwen3_1_7b_no_evidence_eval_v3/metrics.json",
+        "with": "eval_results/qwen3_1_7b_sft_eval/metrics.json",
+        "without": "eval_results/qwen3_1_7b_no_evidence_eval_v3/metrics.json",
     },
     "Qwen3-4B": {
-        "with": "/workspace/eval_results/d111_4b_sft_s42_reeval/metrics.json",
-        "without": "/workspace/eval_results/plan_014_no_evidence_eval_d076/metrics.json",
+        "with": "eval_results/d111_4b_sft_s42_reeval/metrics.json",
+        "without": "eval_results/plan_014_no_evidence_eval_d076/metrics.json",
     },
     "Qwen3-8B": {
-        "with": "/workspace/eval_results/qwen3_8b_sft_eval/metrics.json",
-        "without": "/workspace/eval_results/qwen3_8b_no_evidence_eval_v2/metrics.json",
+        "with": "eval_results/qwen3_8b_sft_eval/metrics.json",
+        "without": "eval_results/qwen3_8b_no_evidence_eval_v2/metrics.json",
     },
     "Llama-3.1-8B": {
-        "with": "/workspace/eval_results/llama_3_1_8b_sft_eval/metrics.json",
-        "without": "/workspace/eval_results/llama_3_1_8b_no_evidence_eval/metrics.json",
+        "with": "eval_results/llama_3_1_8b_sft_eval/metrics.json",
+        "without": "eval_results/llama_3_1_8b_no_evidence_eval/metrics.json",
     },
 }
 

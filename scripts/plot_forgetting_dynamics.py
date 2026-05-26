@@ -41,7 +41,7 @@ STYLE_BF16 = dict(color=C_BF16, linestyle="-", marker="o", markersize=4.5, zorde
 STYLE_QLORA_CED = dict(color=C_QLORA_CED, linestyle="--", marker="s", markersize=4.5, zorder=4)
 STYLE_QLORA_LR5E6 = dict(color=C_QLORA_LR5E6, linestyle=":", marker="^", markersize=4.5, zorder=3)
 
-TRAINING_LOG_PATH = "/workspace/freige/training_logs_grpo.json"
+TRAINING_LOG_PATH = "./training_logs_grpo.json"
 
 SFT = {"rel_f1": 0.4057, "evi_f1": 0.7979, "edcr": 0.7118}
 
@@ -166,7 +166,7 @@ def main():
     plot_panel_rel_f1(axes[1], logs)
     plot_panel_evi_f1(axes[2], logs)
 
-    out_dir = "/workspace/freige/figures"
+    out_dir = "./figures"
     os.makedirs(out_dir, exist_ok=True)
 
     for ext in ("pdf", "png"):

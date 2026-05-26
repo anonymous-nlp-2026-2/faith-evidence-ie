@@ -37,7 +37,7 @@ LABELS = {
     'bf16_g4':     'bf16 LoRA (G=4)',
 }
 
-with open('/workspace/artifacts/plan_009_grpo_forgetting/reward_trajectories.json') as f:
+with open('./artifacts/plan_009_grpo_forgetting/reward_trajectories.json') as f:
     raw_traj = json.load(f)
 
 def get_reward_series(data):
@@ -151,7 +151,7 @@ ax.grid(axis='y', alpha=0.2, linewidth=0.4)
 ax.set_ylim(0.55, 1.02)
 ax.set_xlim(0, 115)
 
-outdir = '/workspace/freige/figures'
+outdir = './figures'
 os.makedirs(outdir, exist_ok=True)
 fig.savefig(os.path.join(outdir, 'grpo_forgetting_dynamics_v6.pdf'))
 fig.savefig(os.path.join(outdir, 'grpo_forgetting_dynamics_v6.png'))

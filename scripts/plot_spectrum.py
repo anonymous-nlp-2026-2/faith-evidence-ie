@@ -81,7 +81,7 @@ ax.grid(True, alpha=0.12, color='#999999', linestyle='-', linewidth=0.3)
 
 fig.tight_layout()
 
-out_dir = '/workspace/freige/artifacts'
+out_dir = './artifacts'
 os.makedirs(out_dir, exist_ok=True)
 for ext in ('pdf', 'png'):
     fig.savefig(f'{out_dir}/fig_spectrum.{ext}', bbox_inches='tight', dpi=300)

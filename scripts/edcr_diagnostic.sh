@@ -3,7 +3,7 @@
 #
 # Input:  各方法的 eval 输出 (metrics.json / results.json)，路径定义在
 #         freige/eval/cross_method_table.py 的 EVAL_CONFIGS 中
-# Output: /workspace/eval_results/cross_method_table.json
+# Output: eval_results/cross_method_table.json
 #         + 控制台打印对比表（含 rel_f1, evi_f1, EDCR, Δ 等）
 #
 # 方法列表:
@@ -20,7 +20,7 @@ set -euo pipefail
 
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
 
-cd /workspace
+cd .
 
 echo "=== plan_003: EDCR Cross-Method Diagnostic ==="
 echo ""
@@ -28,4 +28,4 @@ echo ""
 python -m freige.eval.cross_method_table
 
 echo ""
-echo "Table exported to /workspace/eval_results/cross_method_table.json"
+echo "Table exported to eval_results/cross_method_table.json"

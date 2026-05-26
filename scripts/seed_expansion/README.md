@@ -17,10 +17,10 @@ All use identical hyperparams to D102 k=1 runs, only seed and output_dir differ.
 GPU=2 bash scripts/seed_expansion/train_1_7b_s43.sh
 
 # Eval after training:
-GPU=2 MODEL_PATH=/workspace/rsft_output_qwen3_1_7b_k1_s43 \
-  BASE_MODEL=/workspace/models/Qwen/Qwen3-1.7B \
-  SFT_ADAPTER=/workspace/sft_output_qwen3_1_7b_bf16 \
-  OUTPUT_DIR=/workspace/eval_results/d102_1_7b_k1_s43 \
+GPU=2 MODEL_PATH=rsft_output_qwen3_1_7b_k1_s43 \
+  BASE_MODEL=Qwen/Qwen3-1.7B \
+  SFT_ADAPTER=sft_output_qwen3_1_7b_bf16 \
+  OUTPUT_DIR=eval_results/d102_1_7b_k1_s43 \
   SEED=43 \
   bash scripts/seed_expansion/eval_template.sh
 ```

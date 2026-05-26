@@ -20,7 +20,7 @@ from pathlib import Path
 
 
 def _load_train_facts(train_path: str) -> set[tuple]:
-    sys.path.insert(0, "/workspace/freige")
+    sys.path.insert(0, ".")
     from freige.data.docred_processor import DOCRED_REL_INFO
 
     with open(train_path) as f:
@@ -83,7 +83,7 @@ def main():
     parser = argparse.ArgumentParser(description="Fair evidence tax comparison")
     parser.add_argument("--with-evi", required=True, help="With-evidence predictions.json")
     parser.add_argument("--no-evi", required=True, help="No-evidence predictions.json")
-    parser.add_argument("--train", default="/workspace/data/docred/train_annotated.json",
+    parser.add_argument("--train", default="data/docred/train_annotated.json",
                         help="Train file for ign_f1 computation")
     parser.add_argument("--json-out", default=None, help="Optional JSON output path")
     args = parser.parse_args()

@@ -5,18 +5,18 @@ set -euo pipefail
 
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
 
-cd /workspace
+cd .
 
-CKPT_DIR="/workspace/grpo_bf16_g4/checkpoint-100"
-BASE_MODEL="/workspace/models/Qwen3-4B"
-SFT_ADAPTER="/workspace/sft_output"
-DATA_PATH="/workspace/data/docred"
-OUTPUT_DIR="/workspace/eval_results/grpo_bf16_g4_step100"
+CKPT_DIR="./grpo_bf16_g4/checkpoint-100"
+BASE_MODEL="Qwen/Qwen3-4B"
+SFT_ADAPTER="./sft_output"
+DATA_PATH="data/docred"
+OUTPUT_DIR="eval_results/grpo_bf16_g4_step100"
 
 if [ ! -d "$CKPT_DIR" ]; then
     echo "ERROR: checkpoint-100 not found at ${CKPT_DIR}"
     echo "Current checkpoints:"
-    ls -d /workspace/grpo_bf16_g4/checkpoint-* 2>/dev/null || echo "  (none)"
+    ls -d ./grpo_bf16_g4/checkpoint-* 2>/dev/null || echo "  (none)"
     exit 1
 fi
 

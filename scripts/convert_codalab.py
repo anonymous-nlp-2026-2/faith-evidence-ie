@@ -5,7 +5,7 @@ Input format (current):  {title: [{r, h, t, evidence}, ...]}
 Output format (CodaLab): [{title, h_idx, t_idx, r, evidence}, ...]
 
 Usage:
-    python convert_codalab.py /workspace/eval_results/test_eval_*/codalab_submission.json
+    python convert_codalab.py eval_results/test_eval_*/codalab_submission.json
 """
 import json
 import sys

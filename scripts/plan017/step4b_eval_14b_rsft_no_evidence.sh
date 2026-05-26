@@ -3,17 +3,17 @@
 # Must pass --no_evidence to use NO_EVIDENCE_SYSTEM_PROMPT (C005)
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
 export CUDA_VISIBLE_DEVICES=${GPU:-${CUDA_VISIBLE_DEVICES:-2,3}}
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
-RSFT_ADAPTER="/workspace/rsft_output_14b"
-SFT_ADAPTER="/workspace/sft_output_14b"
-BASE_MODEL="/workspace/models/Qwen/Qwen3-14B"
-OUTPUT_DIR="/workspace/eval_results/plan017_14b_rsft_no_evidence_eval"
+RSFT_ADAPTER="./rsft_output_14b"
+SFT_ADAPTER="./sft_output_14b"
+BASE_MODEL="Qwen/Qwen3-14B"
+OUTPUT_DIR="eval_results/plan017_14b_rsft_no_evidence_eval"
 
 # --- Pre-flight checks ---
 if [ ! -f "${RSFT_ADAPTER}/adapter_config.json" ]; then
@@ -39,7 +39,7 @@ python -m freige.eval.inference \
     --model_path "${RSFT_ADAPTER}" \
     --base_model "${BASE_MODEL}" \
     --sft_adapter "${SFT_ADAPTER}" \
-    --data_path /workspace/data/docred \
+    --data_path data/docred \
     --split dev \
     --output_dir "${OUTPUT_DIR}" \
     --batch_size 4 \

@@ -3,10 +3,10 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-BASE = "/workspace/models/Qwen3-4B"
-SFT = "/workspace/sft_output"
-RSFT = "/workspace/rsft_output_ced_s43/checkpoint-510"
-OUT = "/workspace/merged_sft_rsft_ced_s43"
+BASE = "Qwen/Qwen3-4B"
+SFT = "./sft_output"
+RSFT = "./rsft_output_ced_s43/checkpoint-510"
+OUT = "./merged_sft_rsft_ced_s43"
 
 print("Loading base model...")
 model = AutoModelForCausalLM.from_pretrained(BASE, torch_dtype=torch.bfloat16, device_map="cpu")

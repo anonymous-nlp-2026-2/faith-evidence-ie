@@ -1,19 +1,19 @@
 #!/bin/bash
 set -e
 source /root/miniconda3/bin/activate
-cd /workspace/freige
+cd .
 
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export CUDA_VISIBLE_DEVICES=2,3
 
 # 14B RSFT 需要预合并的 SFT 模型（ZeRO-3 不支持运行时 adapter merge）
 # 先运行: python scripts/merge_sft_adapter_14b.py
-MERGED_MODEL=/workspace/models/Qwen3-14B-sft-merged
+MERGED_MODEL=Qwen/Qwen3-14B-sft-merged
 
 # RSFT 数据路径（CED k=1 筛选后）— 需要先完成 14B 生成+CED 打分
-RSFT_DATA=/workspace/freige/outputs/rsft_scored_14b_k1/rsft_train.jsonl
+RSFT_DATA=./outputs/rsft_scored_14b_k1/rsft_train.jsonl
 
 accelerate launch \
   --config_file configs/accelerate_2gpu_zero3.yaml \
@@ -21,7 +21,7 @@ accelerate launch \
   --base_model "$MERGED_MODEL" \
   --sft_adapter "" \
   --rsft_data_path "$RSFT_DATA" \
-  --output_dir /workspace/rsft_output_14b \
+  --output_dir ./rsft_output_14b \
   --deepspeed configs/deepspeed_zero3.json \
   --lora_rank 64 \
   --lora_alpha 128 \

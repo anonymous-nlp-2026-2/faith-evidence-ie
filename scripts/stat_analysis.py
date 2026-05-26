@@ -302,7 +302,7 @@ def generate_latex(groups):
 
 def main():
     ap = argparse.ArgumentParser(description="Evidence-grounded DocRE stat analysis")
-    ap.add_argument("--results_dir", default="/workspace/eval_results/")
+    ap.add_argument("--results_dir", default="eval_results/")
     ap.add_argument("--format", choices=["text", "json", "latex"], default="text")
     ap.add_argument("--output", default=None)
     args = ap.parse_args()

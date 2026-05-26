@@ -9,10 +9,10 @@ import sys
 from collections import defaultdict, Counter
 from pathlib import Path
 
-sys.path.insert(0, '/workspace/freige')
+sys.path.insert(0, '.')
 
-EVAL_ROOT = Path("/workspace/eval_results")
-DATA_ROOT = Path("/workspace/data/docred")
+EVAL_ROOT = Path("eval_results")
+DATA_ROOT = Path("data/docred")
 
 # 4B eval paths
 WE_DIR = EVAL_ROOT / "sft_baseline_d076_reeval"  # with-evidence (metrics only)

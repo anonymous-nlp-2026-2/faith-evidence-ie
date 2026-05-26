@@ -1,18 +1,18 @@
 #!/bin/bash
 set -e
 source /root/miniconda3/bin/activate
-cd /workspace/freige
+cd .
 
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
 accelerate launch \
   --config_file configs/accelerate_2gpu_zero3.yaml \
   -m freige.training.sft_trainer \
-  --model_name /workspace/models/Qwen/Qwen3-14B \
-  --data_dir /workspace/data/docred \
-  --output_dir /workspace/sft_output_14b \
+  --model_name Qwen/Qwen3-14B \
+  --data_dir data/docred \
+  --output_dir ./sft_output_14b \
   --deepspeed configs/deepspeed_zero3_14b.json \
   --no-quantize \
   --lora_rank 64 \

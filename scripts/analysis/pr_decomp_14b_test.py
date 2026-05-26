@@ -4,9 +4,9 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-GOLD_PATH = "/workspace/data/re-docred-repo/data/test_revised.json"
-PRED_PATH = "/workspace/eval_results/test_eval_14b_rsft_s42/codalab_submission.json"
-PRED_RAW_PATH = "/workspace/eval_results/test_eval_14b_rsft_s42/predictions.json"
+GOLD_PATH = "data/re-docred-repo/data/test_revised.json"
+PRED_PATH = "eval_results/test_eval_14b_rsft_s42/codalab_submission.json"
+PRED_RAW_PATH = "eval_results/test_eval_14b_rsft_s42/predictions.json"
 
 DOCRED_REL_INFO = {
     "P6": "head of government", "P17": "country", "P19": "place of birth",

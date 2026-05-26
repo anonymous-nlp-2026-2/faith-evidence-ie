@@ -525,19 +525,19 @@ def main():
         help="Eval directory names (under eval_base)."
     )
     parser.add_argument(
-        "--eval_base", default="/workspace/eval_results",
+        "--eval_base", default="eval_results",
         help="Base directory containing eval result dirs."
     )
     parser.add_argument(
-        "--gold_path", default="/workspace/data/docred/dev.json",
+        "--gold_path", default="data/docred/dev.json",
         help="Path to DocRED dev.json."
     )
     parser.add_argument(
-        "--train_path", default="/workspace/data/docred/train_annotated.json",
+        "--train_path", default="data/docred/train_annotated.json",
         help="Path to DocRED train_annotated.json."
     )
     parser.add_argument(
-        "--output_dir", default="/workspace/analysis/error_analysis",
+        "--output_dir", default="./analysis/error_analysis",
         help="Output directory."
     )
     parser.add_argument(

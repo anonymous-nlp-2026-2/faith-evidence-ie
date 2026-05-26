@@ -2,20 +2,20 @@
 # Random RSFT k=1 baseline (Claim 3 ablation: random vs CED scoring)
 set -euo pipefail
 source /root/miniconda3/etc/profile.d/conda.sh && conda activate base
-cd /workspace/freige
+cd .
 
-export HF_HOME=/workspace/.hf_cache
+export HF_HOME=./.hf_cache
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 # export CUDA_VISIBLE_DEVICES=${GPU:-0}  # removed: tmux wrapper sets this
 
-RANDOM_DATA=/workspace/rsft_random_k1/rsft_train.jsonl
+RANDOM_DATA=./rsft_random_k1/rsft_train.jsonl
 
 python -m freige.training.rsft_trainer \
-  --base_model /workspace/models/Qwen3-4B \
-  --sft_adapter /workspace/sft_output \
+  --base_model Qwen/Qwen3-4B \
+  --sft_adapter ./sft_output \
   --rsft_data_path "$RANDOM_DATA" \
-  --output_dir /workspace/rsft_output_random_k1 \
+  --output_dir ./rsft_output_random_k1 \
   --learning_rate 2e-5 \
   --num_epochs 3 \
   --per_device_batch_size 1 \

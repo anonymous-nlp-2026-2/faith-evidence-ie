@@ -6,10 +6,10 @@ Input:
     predictions.json format: list of {doc_id, parsed_triples, gold_triples}
     where each triple has {head, relation, tail, evidence}
 
-  OR --auto-discover (scan /workspace/eval_results/*/predictions.json)
+  OR --auto-discover (scan eval_results/*/predictions.json)
 
   --gold PATH  DocRED dev.json for gold (only needed if predictions.json lacks gold_triples)
-  --output-dir PATH  Where to write results (default: /workspace/eval_results/)
+  --output-dir PATH  Where to write results (default: eval_results/)
 
 Output (in output_dir):
   edcr_diagnostic.json  — per-method: overall EDCR, per-relation-type EDCR, per-document EDCR stats
@@ -23,7 +23,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-# Allow importing freige when run from /workspace/
+# Allow importing freige when run from ./
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from eval.evaluator import DocREDEvaluator, _triple_key
@@ -33,19 +33,19 @@ from eval.evaluator import DocREDEvaluator, _triple_key
 # Default method configs for --auto-discover
 # --------------------------------------------------------------------------
 AUTO_METHODS = [
-    ("SFT baseline (quant)", "/workspace/sft_baseline_eval_results/predictions.json"),
-    ("SFT baseline (noquant)", "/workspace/eval_results/sft_baseline_noquant/predictions.json"),
-    ("RSFT-CED s42", "/workspace/eval_results/rsft_r1/predictions.json"),
-    ("RSFT-CED s43", "/workspace/eval_results/rsft_s43/predictions.json"),
-    ("RSFT-CED s44", "/workspace/eval_results/rsft_s44/predictions.json"),
-    ("RSFT-CED r2a", "/workspace/eval_results/rsft_r2a/predictions.json"),
-    ("RSFT-CED r2b", "/workspace/eval_results/rsft_r2b/predictions.json"),
-    ("RSFT-flatNLI s42", "/workspace/eval_results/rsft_flat_nli/predictions.json"),
-    ("SFT no-evidence", "/workspace/eval_results/sft_no_evidence/predictions.json"),
-    ("GRPO bf16 ckpt100", "/workspace/eval_results/grpo_g8_bf16_ckpt100/predictions.json"),
-    ("GRPO QLoRA kl001 ckpt100", "/workspace/eval_results/grpo_ced_kl001_step100/checkpoint-100/predictions.json"),
-    ("GRPO QLoRA lr5e6 ckpt100", "/workspace/eval_results/lr5e6_r1_ckpt100/checkpoint-100/predictions.json"),
-    ("DPO-CED 1ep (fixed)", "/workspace/eval_results/dpo_ced_1ep_fixed/predictions.json"),
+    ("SFT baseline (quant)", "./sft_baseline_eval_results/predictions.json"),
+    ("SFT baseline (noquant)", "eval_results/sft_baseline_noquant/predictions.json"),
+    ("RSFT-CED s42", "eval_results/rsft_r1/predictions.json"),
+    ("RSFT-CED s43", "eval_results/rsft_s43/predictions.json"),
+    ("RSFT-CED s44", "eval_results/rsft_s44/predictions.json"),
+    ("RSFT-CED r2a", "eval_results/rsft_r2a/predictions.json"),
+    ("RSFT-CED r2b", "eval_results/rsft_r2b/predictions.json"),
+    ("RSFT-flatNLI s42", "eval_results/rsft_flat_nli/predictions.json"),
+    ("SFT no-evidence", "eval_results/sft_no_evidence/predictions.json"),
+    ("GRPO bf16 ckpt100", "eval_results/grpo_g8_bf16_ckpt100/predictions.json"),
+    ("GRPO QLoRA kl001 ckpt100", "eval_results/grpo_ced_kl001_step100/checkpoint-100/predictions.json"),
+    ("GRPO QLoRA lr5e6 ckpt100", "eval_results/lr5e6_r1_ckpt100/checkpoint-100/predictions.json"),
+    ("DPO-CED 1ep (fixed)", "eval_results/dpo_ced_1ep_fixed/predictions.json"),
 ]
 
 
@@ -283,7 +283,7 @@ def main():
         help="Auto-discover methods from built-in config"
     )
     parser.add_argument(
-        "--output-dir", default="/workspace/eval_results/",
+        "--output-dir", default="eval_results/",
         help="Output directory for diagnostic files"
     )
     parser.add_argument(
